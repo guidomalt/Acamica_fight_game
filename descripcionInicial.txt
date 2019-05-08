@@ -1,0 +1,74 @@
+Definiciones Generales
+A - Modalidad de Juego:
+    1 vs 1.
+    Player 1 vs COM
+    Player 1 vs Player 2
+    COM vs COM
+    Indispensable Elección de Personajes.
+    Por turnos Individuales: Player1 elije un (1) movimiento o bloqueo luego Player2 escoje un (1) movimiento o bloqueo.
+
+B - Victorias:
+    Cuando un contrincante quede con nivel de energia = 0%, se adjudica 1 Ronda al Player que quede con nivel de energia > 0.
+	Cuando el tiempo de la ronda se agota, Se adjudica 1 Ronda al Player que quede con mayor nivel de energia.
+    Se adjudica Ganador del Juego al mejor de 3 Rondas.
+	
+
+C - Turnos:
+    Primer Turno para Iniciar Juego es Aleatoria.
+    Turno finaliza luego de tener la elección de movimiento o bloqueo de cada Player.
+    Turno siguiente se concede al jugador que haya recibido mas daño o que movimiento de bloqueo se haya hecho efectivo.
+    Turnos Infinitas hasta cumplir condicion de victoria de una ronda (B)
+
+
+D - Empates:   
+    si ambos jugadores llegan al Minimo de Salud en el mismo turno. (No se adjudica Victoria a ningún Player).
+
+Personajes:
+    Nombre
+    Salud Energia
+    Movimientos: Golpe puño, Golpe Patada, Golpe especial, bloqueo.
+	
+	
+EN SEUDOCODIGO	
+	
+// Definición de un objeto llamado movimiento:    habría  una instancia de este objeto por cada golpe de cada personaje
+// Que tiene los siguientes atributos:
+nombre:
+energiaNecesaria     // % de energía que consume al hacer el movimiento
+poder   // % de daño que produce el golpe 
+
+// Definición de un objeto llamado Personaje:  de este tipo de objetos habrían 4 instancias, 1 por cada personaje
+// Que tiene los siguientes atributos:
+nombre:
+nivelEnergía // empieza con el 100% de energía
+movimientos [] // arreglo de objetos de tipo movimiento,... ejemplos patada, golpeDePuño, golpeEspecial, bloqueo)
+
+//Que tiene las siguientes funciones
+aplicarMovimiemto()
+asimilarGolpe()
+
+// Variables
+
+var player1 // objeto tipo personaje
+var player2 // objeto tipo personaje
+var primerTurno // quien comienza
+
+ganadorRonda[]; //arreglo que contiene quien gano cada ronda
+
+
+// Definición de funciones que hacen al juego:
+iniciarJuego() {}
+elegirModalidad(){} // Segun las definiones generales
+elegirPersonaje() {} // 2 modalidades, los elije la maquina o los elije el 
+usuario 
+comenzarCombate() {
+    for (var i = 0; i < 3; i++) {
+    definirPrimerTurno(){}
+            while (!hayGanador() ){ // la funcion hayGanador(), evalua si hay un ganador de la ronda.
+            intercambiarGolpes()  // el usuario elije que golpe lanza cada personaje, también decide si los personajes bloquean el golpe del contrincante o no lo hace
+            actualizarEnergiaContrincantes() //
+    }
+    mostrarGanadorRonda();
+    }
+mostarGanadorJuego()
+}
